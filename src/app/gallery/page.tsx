@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useRouter } from 'next/navigation';
@@ -25,11 +24,11 @@ export default function GalleryPage() {
           </Button>
           <h1 className="text-5xl font-black text-slate-900 tracking-tighter mb-12">GALERIA DE <span className="text-primary">EMOÇÕES</span></h1>
           
-          <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+          <div className="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
             {galleryImages.map((image) => (
               <Dialog key={image.id}>
                 <DialogTrigger asChild>
-                  <div className="break-inside-avoid rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-sm hover:scale-[1.02] transition-transform cursor-zoom-in group">
+                  <div className="break-inside-avoid rounded-xl overflow-hidden shadow-sm hover:scale-[1.02] transition-transform cursor-zoom-in group">
                     <Image 
                       src={image.imageUrl} 
                       alt={image.description}
