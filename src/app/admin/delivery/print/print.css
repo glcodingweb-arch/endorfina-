@@ -1,0 +1,276 @@
+:root {
+    --bg-paper: #FFFFFF;
+    --text-primary: #1F1F1F; /* Grafite suave */
+    --text-secondary: #525252; /* Cinza médio */
+    --border-color: #E0E0E0; /* Cinza claro */
+    --accent-institutional: hsl(var(--primary));
+    --print-black: #000000;
+    --font-main: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact;
+}
+
+body {
+    background-color: #F5F5F7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: var(--font-main);
+    color: var(--text-primary);
+}
+
+/* Container da Etiqueta */
+.label-registry {
+    width: 420px;
+    background: var(--bg-paper);
+    border: 1px solid var(--border-color);
+    padding: 24px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    position: relative;
+    overflow: hidden;
+    animation: labelEntry 0.6s ease-out;
+}
+
+@keyframes labelEntry {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Estrutura Esquelética */
+.registry-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.section {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 16px;
+}
+
+.section:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+/* Cabeçalho Logístico */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.brand-slot {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.brand-id {
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+}
+
+.service-badge {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--accent-institutional);
+    padding: 2px 6px;
+    border: 1px solid var(--accent-institutional);
+    display: inline-block;
+}
+
+/* Bloco de Destinatário */
+.address-block {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.label-caption {
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+}
+
+.recipient-name {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 2px;
+}
+
+.address-detail {
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--text-secondary);
+}
+
+/* Barcode Area - Representação Visual Core */
+.tracking-area {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.barcode-visual {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    gap: 1.5px;
+    margin-bottom: 8px;
+    overflow: hidden;
+}
+
+.bar { background: var(--text-primary); flex-grow: 1; }
+.bar.w-1 { width: 1px; }
+.bar.w-2 { width: 2px; }
+.bar.w-3 { width: 4px; }
+.bar.w-4 { width: 6px; }
+
+.tracking-number {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: var(--text-primary);
+}
+
+/* Grid de Informações de Suporte */
+.meta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.meta-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.meta-value {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-primary);
+}
+
+.highlight-value {
+    color: var(--accent-institutional);
+    font-weight: 700;
+}
+
+/* Footer / Nota Fiscal */
+.footer-registry {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 10px;
+}
+
+.qr-placeholder {
+    width: 64px;
+    height: 64px;
+    padding: 4px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notice-box {
+    max-width: 200px;
+    font-size: 9px;
+    color: var(--text-secondary);
+    line-height: 1.3;
+    border-left: 2px solid var(--border-color);
+    padding-left: 8px;
+}
+
+/* Interatividade Sutil */
+.label-registry:hover {
+    border-color: var(--text-secondary);
+}
+
+.barcode-visual .bar {
+    transition: opacity 0.3s ease;
+}
+
+.label-registry:hover .barcode-visual .bar:nth-child(odd) {
+    opacity: 0.8;
+}
+
+/* Otimização para Impressão - ATUALIZADO */
+@media print {
+    /* 1. Esconde tudo por padrão */
+    body * {
+        visibility: hidden;
+    }
+
+    /* 2. Mostra apenas a etiqueta e seus filhos */
+    .label-registry,
+    .label-registry * {
+        visibility: visible;
+    }
+
+    @page {
+        size: 10cm 15cm;
+        margin: 0;
+    }
+
+    body { 
+        margin: 0;
+        padding: 0;
+        background: white; 
+    }
+
+    /* 3. Posiciona a etiqueta no topo e define o tamanho exato */
+    .label-registry {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 10cm;
+        height: 15cm;
+        padding: 6mm;
+        box-shadow: none;
+        border: 1px solid black;
+        overflow: hidden;
+        page-break-after: avoid; /* Previne quebras após a etiqueta */
+    }
+    
+    /* 4. Garante que não haja quebras internas */
+    .label-registry,
+    .section,
+    .registry-grid {
+        page-break-inside: avoid;
+    }
+    
+    .recipient-name { font-size: 15px; }
+    .address-detail { font-size: 11px; line-height: 1.3; }
+    .tracking-area { padding: 4px 0; }
+    .barcode-visual { height: 35px; margin-bottom: 4px; }
+    .tracking-number { font-size: 11px; letter-spacing: 0.15em; }
+    .notice-box { font-size: 7px; max-width: 180px;}
+    .qr-placeholder { width: 50px; height: 50px; border-width: 0.5px; padding: 2px; }
+    
+    .service-badge, .highlight-value {
+        color: black !important;
+        border-color: black !important;
+    }
+    .bar { background: black !important; }
+    .no-print { display: none !important; }
+}

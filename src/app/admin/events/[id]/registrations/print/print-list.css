@@ -1,0 +1,48 @@
+
+body {
+  background-color: #f0f2f5;
+}
+
+.print-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  font-family: 'Inter', sans-serif;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 15mm;
+  }
+  
+  body {
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  
+  .print-container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  /* Ensure table styles are maintained */
+  table, thead, tbody, tr, th, td {
+    border-color: #e5e7eb !important; /* Tailwind gray-200 */
+  }
+
+  th {
+      font-weight: 500 !important;
+  }
+}
+

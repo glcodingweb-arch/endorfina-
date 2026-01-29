@@ -1,0 +1,118 @@
+{
+  "placeholderImages": [
+    {
+      "id": "team-photo",
+      "description": "Um grupo de profissionais, a equipe Endorfina Esportes.",
+      "imageUrl": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxwcm9mZXNzaW9uYWwlMjB0ZWFtfGVufDB8fHx8MTc2NTMyNjMzNHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "professional team"
+    },
+    {
+      "id": "guarulhos-todo-dia-cover",
+      "description": "Capa da revista Guarulhos Todo Dia destacando um evento de corrida.",
+      "imageUrl": "/Revista/G negocios dez 2025.png",
+      "imageHint": "magazine cover"
+    },
+    {
+      "id": "new-hero-runner",
+      "description": "Foto dinâmica de uma corredora em ação.",
+      "imageUrl": "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/dc4207234742333.68cd5e25b0785.jpg",
+      "imageHint": "female runner"
+    },
+    {
+      "id": "about-us-runners",
+      "description": "Dois corredores lado a lado durante uma corrida.",
+      "imageUrl": "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/4847fe234742333.68cd5baedd42f.jpg",
+      "imageHint": "runners racing"
+    },
+    {
+      "id": "hero-image",
+      "description": "Um grande grupo de corredores na largada de uma maratona na cidade.",
+      "imageUrl": "https://images.unsplash.com/photo-1746046318027-164973a1569a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxtYXJhdGhvbiUyMHN0YXJ0fGVufDB8fHx8MTc2Mjg3NTMyN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "marathon start"
+    },
+    {
+      "id": "rio-marathon",
+      "description": "Corredores com a bela vista da costa do Rio de Janeiro.",
+      "imageUrl": "https://images.unsplash.com/photo-1553503881-4de3e0d7bb79?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxydW5uaW5nJTIwcmlvfGVufDB8fHx8MTc2MjkwOTA5N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "running rio"
+    },
+    {
+      "id": "sao-silvestre",
+      "description": "Corrida noturna em uma cidade movimentada, São Paulo.",
+      "imageUrl": "https://images.unsplash.com/photo-1760706112663-1b3932597980?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y2l0eSUyMG5pZ2h0JTIwcnVufGVufDB8fHx8MTc2MjkwOTA5N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "city night run"
+    },
+    {
+      "id": "florianopolis-half-marathon",
+      "description": "Corredores atravessando uma ponte em Florianópolis.",
+      "imageUrl": "https://images.unsplash.com/photo-1630371188689-c68deb158af9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxicmlkZ2UlMjBydW58ZW58MHx8fHwxNzYyOTA5MDk3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "bridge run"
+    },
+    {
+      "id": "recife-bridges-race",
+      "description": "Arquitetura histórica e pontes de Recife como cenário de corrida.",
+      "imageUrl": "https://images.unsplash.com/photo-1638909486348-82ae8d57dfd7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxoaXN0b3JpYyUyMHJhY2V8ZW58MHx8fHwxNzYyOTA5MDk3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "historic race"
+    },
+    {
+      "id": "pampulha-race",
+      "description": "Corredores ao redor da lagoa da Pampulha em Belo Horizonte.",
+      "imageUrl": "https://images.unsplash.com/photo-1668982470129-9b2000400f06?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxsYWtlJTIwcnVufGVufDB8fHx8MTc2MjkwOTA5N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "lake run"
+    },
+    {
+      "id": "curitiba-marathon",
+      "description": "Parques verdes de Curitiba durante uma maratona.",
+      "imageUrl": "https://images.unsplash.com/photo-1723713670471-19d375790705?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxwYXJrJTIwcnVufGVufDB8fHx8MTc2MjkwOTA5OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "park run"
+    },
+    {
+      "id": "gallery-finish-line",
+      "description": "Um corredor comemorando com os braços levantados na linha de chegada.",
+      "imageUrl": "https://images.unsplash.com/photo-1534237928212-034fb5a93a55?q=80&w=1200",
+      "imageHint": "finish line"
+    },
+    {
+      "id": "gallery-crowd-start",
+      "description": "Uma grande multidão de corredores na linha de largada de uma maratona.",
+      "imageUrl": "https://images.unsplash.com/photo-1579899138893-913535973351?q=80&w=1200",
+      "imageHint": "running crowd"
+    },
+    {
+      "id": "gallery-trail-running",
+      "description": "Um corredor solitário em uma bela trilha na montanha durante o pôr do sol.",
+      "imageUrl": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=1200",
+      "imageHint": "trail running"
+    },
+    {
+      "id": "gallery-city-marathon",
+      "description": "Corredores passando por uma rua da cidade com espectadores.",
+      "imageUrl": "https://images.unsplash.com/photo-1607962837339-b6b8c4737b60?q=80&w=1200",
+      "imageHint": "city marathon"
+    },
+    {
+      "id": "gallery-medals",
+      "description": "Close-up de medalhas de maratona brilhantes.",
+      "imageUrl": "https://images.unsplash.com/photo-1610482643533-3c6c18b8b0e8?q=80&w=1200",
+      "imageHint": "race medals"
+    },
+    {
+      "id": "gallery-sunrise-run",
+      "description": "Silhueta de um grupo de corredores contra um nascer do sol vibrante.",
+      "imageUrl": "https://images.unsplash.com/photo-1512428208316-80544b616782?q=80&w=1200",
+      "imageHint": "sunrise runners"
+    },
+    {
+      "id": "gallery-friends-running",
+      "description": "Um grupo de amigos felizes correndo juntos em um parque.",
+      "imageUrl": "https://images.unsplash.com/photo-1530037899491-3c9f2bfa51d7?q=80&w=1200",
+      "imageHint": "friends running"
+    },
+    {
+      "id": "gallery-night-race",
+      "description": "Corredores com lanternas de cabeça durante uma corrida noturna.",
+      "imageUrl": "https://images.unsplash.com/photo-1600746369111-ea0374353a47?q=80&w=1200",
+      "imageHint": "night race"
+    }
+  ]
+}

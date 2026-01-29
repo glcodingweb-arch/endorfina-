@@ -1,0 +1,41 @@
+/* Garante que o layout base ocupe a tela */
+body {
+  background-color: #f0f2f5; /* Cor de fundo para fora da área de impressão */
+}
+
+/* Estilo do container de impressão */
+.print-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  font-family: 'Inter', sans-serif;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+
+/* Estilos para o modo de impressão */
+@media print {
+  body {
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .print-container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  /* Esconde o rodapé e o botão na impressão */
+  .no-print {
+    display: none !important;
+  }
+  
+  /* Remove margens e paddings desnecessários */
+  @page {
+    size: A4;
+    margin: 20mm;
+  }
+}

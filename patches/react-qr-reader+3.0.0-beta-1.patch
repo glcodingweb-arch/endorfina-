@@ -1,0 +1,11 @@
+diff --git a/node_modules/react-qr-reader/package.json b/node_modules/react-qr-reader/package.json
+index 289541b..e832857 100644
+--- a/node_modules/react-qr-reader/package.json
++++ b/node_modules/react-qr-reader/package.json
+@@ -37,6 +37,6 @@
+   },
+   "peerDependencies": {
+     "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
+     "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
+   }
+ }

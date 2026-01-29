@@ -1,0 +1,112 @@
+{
+  "placeholderImages": [
+    {
+      "id": "team-photo",
+      "description": "A group of professionals, the Endorfina Esportes team.",
+      "imageUrl": "https://picsum.photos/seed/team/800/600",
+      "imageHint": "professional team"
+    },
+    {
+      "id": "new-hero-runner",
+      "description": "Dynamic shot of a female runner in action.",
+      "imageUrl": "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/dc4207234742333.68cd5e25b0785.jpg",
+      "imageHint": "female runner"
+    },
+    {
+      "id": "about-us-runners",
+      "description": "Two runners side-by-side during a race.",
+      "imageUrl": "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/4847fe234742333.68cd5baedd42f.jpg",
+      "imageHint": "runners racing"
+    },
+    {
+      "id": "hero-image",
+      "description": "A large group of runners at the start of a city marathon.",
+      "imageUrl": "https://images.unsplash.com/photo-1746046318027-164973a1569a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxtYXJhdGhvbiUyMHN0YXJ0fGVufDB8fHx8MTc2Mjg3NTMyN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "marathon start"
+    },
+    {
+      "id": "rio-marathon",
+      "description": "Runners with a beautiful coastal view of Rio de Janeiro.",
+      "imageUrl": "https://images.unsplash.com/photo-1553503881-4de3e0d7bb79?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxydW5uaW5nJTIwcmlvfGVufDB8fHx8MTc2MjkwOTA5N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "running rio"
+    },
+    {
+      "id": "sao-silvestre",
+      "description": "Night race in a bustling city, Sao Paulo.",
+      "imageUrl": "https://images.unsplash.com/photo-1760706112663-1b3932597980?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y2l0eSUyMG5pZ2h0JTIwcnVufGVufDB8fHx8MTc2MjkwOTA5N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "city night run"
+    },
+    {
+      "id": "florianopolis-half-marathon",
+      "description": "Runners crossing a bridge in Florianopolis.",
+      "imageUrl": "https://images.unsplash.com/photo-1630371188689-c68deb158af9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxicmlkZ2UlMjBydW58ZW58MHx8fHwxNzYyOTA5MDk3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "bridge run"
+    },
+    {
+      "id": "recife-bridges-race",
+      "description": "Historic architecture and bridges in Recife as a race backdrop.",
+      "imageUrl": "https://images.unsplash.com/photo-1638909486348-82ae8d57dfd7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxoaXN0b3JpYyUyMHJhY2V8ZW58MHx8fHwxNzYyOTA5MDk3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "historic race"
+    },
+    {
+      "id": "pampulha-race",
+      "description": "Runners around the Pampulha lagoon in Belo Horizonte.",
+      "imageUrl": "https://images.unsplash.com/photo-1668982470129-9b2000400f06?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxsYWtlJTIwcnVufGVufDB8fHx8MTc2MjkwOTA5N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "lake run"
+    },
+    {
+      "id": "curitiba-marathon",
+      "description": "Green city parks of Curitiba during a marathon.",
+      "imageUrl": "https://images.unsplash.com/photo-1723713670471-19d375790705?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxwYXJrJTIwcnVufGVufDB8fHx8MTc2MjkwOTA5OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "park run"
+    },
+    {
+      "id": "gallery-finish-line",
+      "description": "A runner celebrating with arms raised at a marathon finish line.",
+      "imageUrl": "https://images.unsplash.com/photo-1534237928212-034fb5a93a55?q=80&w=1200",
+      "imageHint": "finish line"
+    },
+    {
+      "id": "gallery-crowd-start",
+      "description": "A large crowd of runners at the starting line of a city marathon.",
+      "imageUrl": "https://images.unsplash.com/photo-1579899138893-913535973351?q=80&w=1200",
+      "imageHint": "running crowd"
+    },
+    {
+      "id": "gallery-trail-running",
+      "description": "A lone runner on a beautiful mountain trail during sunset.",
+      "imageUrl": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=1200",
+      "imageHint": "trail running"
+    },
+    {
+      "id": "gallery-city-marathon",
+      "description": "Runners moving through a city street lined with cheering spectators.",
+      "imageUrl": "https://images.unsplash.com/photo-1607962837339-b6b8c4737b60?q=80&w=1200",
+      "imageHint": "city marathon"
+    },
+    {
+      "id": "gallery-medals",
+      "description": "Close-up of shiny marathon medals hanging on a display rack.",
+      "imageUrl": "https://images.unsplash.com/photo-1610482643533-3c6c18b8b0e8?q=80&w=1200",
+      "imageHint": "race medals"
+    },
+    {
+      "id": "gallery-sunrise-run",
+      "description": "Silhouette of a group of runners against a vibrant sunrise.",
+      "imageUrl": "https://images.unsplash.com/photo-1512428208316-80544b616782?q=80&w=1200",
+      "imageHint": "sunrise runners"
+    },
+    {
+      "id": "gallery-friends-running",
+      "description": "A group of happy friends running together in a park.",
+      "imageUrl": "https://images.unsplash.com/photo-1530037899491-3c9f2bfa51d7?q=80&w=1200",
+      "imageHint": "friends running"
+    },
+    {
+      "id": "gallery-night-race",
+      "description": "Runners with headlamps during a race at night.",
+      "imageUrl": "https://images.unsplash.com/photo-1600746369111-ea0374353a47?q=80&w=1200",
+      "imageHint": "night race"
+    }
+  ]
+}

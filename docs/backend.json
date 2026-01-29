@@ -1,0 +1,1416 @@
+
+{
+  "entities": {
+    "ContactMessage": {
+      "title": "Contact Message",
+      "description": "Represents a message submitted through the contact form.",
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string",
+          "description": "The first name of the person sending the message."
+        },
+        "lastName": {
+          "type": "string",
+          "description": "The last name of the person sending the message."
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "The email address of the sender."
+        },
+        "phone": {
+          "type": "string",
+          "description": "The phone number of the sender."
+        },
+        "message": {
+          "type": "string",
+          "description": "The content of the message."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp when the message was sent."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["new", "read", "archived"],
+          "description": "The status of the message."
+        }
+      },
+      "required": ["firstName", "lastName", "email", "message", "createdAt", "status"]
+    },
+    "Race": {
+      "title": "Race",
+      "description": "Represents a single running event.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The official name of the race."
+        },
+        "date": {
+          "type": "string",
+          "format": "date",
+          "description": "The date of the race in YYYY-MM-DD format."
+        },
+        "location": {
+          "type": "string",
+          "description": "The city and state where the race takes place (e.g., 'Rio de Janeiro, RJ')."
+        },
+        "distance": {
+          "type": "string",
+          "description": "A summary of the distances offered (e.g., '5k, 10k, 21k, 42k')."
+        },
+        "description": {
+          "type": "string",
+          "description": "A short, one-sentence description of the race."
+        },
+        "longDescription": {
+          "type": "string",
+          "description": "A detailed description of the event."
+        },
+        "image": {
+          "type": "string",
+          "description": "The ID of the placeholder image for the race."
+        },
+        "featured": {
+          "type": "boolean",
+          "description": "Whether the race should be featured on the homepage."
+        },
+        "organizerId": {
+          "type": "string",
+          "description": "The ID of the organizer responsible for the event."
+        },
+        "options": {
+          "type": "array",
+          "description": "An array of registration options (distances).",
+          "items": {
+            "type": "object",
+            "properties": {
+              "distance": {
+                "type": "string",
+                "description": "The specific distance for this option (e.g., '5km')."
+              },
+              "lots": {
+                "type": "array",
+                "description": "An array of pricing tiers (lots) for this distance.",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "description": "The name of the lot (e.g., '1º Lote')."
+                    },
+                    "price": {
+                      "type": "number",
+                      "description": "The registration price for this lot."
+                    },
+                    "startDate": {
+                      "type": "string",
+                      "format": "date",
+                      "description": "The start date for this pricing lot."
+                    },
+                    "endDate": {
+                      "type": "string",
+                      "format": "date",
+                      "description": "The end date for this pricing lot."
+                    }
+                  },
+                  "required": ["name", "price", "startDate", "endDate"]
+                }
+              },
+              "kitTypes": {
+                "type": "array",
+                "description": "An array of available kit types for this distance option.",
+                "items": {
+                  "$ref": "#/entities/Kit"
+                }
+              },
+              "registrationTypes": {
+                "type": "array",
+                "description": "An array of available registration types for this distance option.",
+                "items": {
+                  "$ref": "#/entities/RegistrationType"
+                }
+              }
+            },
+            "required": ["distance", "lots"]
+          }
+        },
+        "kitItems": {
+            "type": "array",
+            "description": "A list of items included in the event kit.",
+            "items": {
+              "$ref": "#/entities/KitItem"
+            }
+        },
+        "showKitItems": {
+            "type": "boolean",
+            "description": "Controls the visibility of the kit items on the race page.",
+            "default": true
+        },
+        "contentBlocks": {
+          "type": "array",
+          "description": "An array of modular content blocks for the event page.",
+          "items": {
+            "oneOf": [
+              { "$ref": "#/entities/TextBlock" },
+              { "$ref": "#/entities/ImageGalleryBlock" },
+              { "$ref": "#/entities/InfoGridBlock" }
+            ]
+          }
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp when the race was created."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp when the race was last updated."
+        },
+        "photoGalleryUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL for the official photo gallery of the event."
+        },
+        "tags": {
+          "type": "array",
+          "description": "A list of tags or categories for the race.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "kitDelivery": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "price": {
+              "type": "number"
+            }
+          }
+        },
+        "kitPickup": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "location": {
+              "type": "string"
+            },
+            "details": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "required": [
+        "name",
+        "date",
+        "location",
+        "distance",
+        "description",
+        "longDescription",
+        "image",
+        "featured",
+        "organizerId",
+        "options"
+      ]
+    },
+    "RaceTag": {
+      "title": "Race Tag",
+      "description": "Represents a category or tag for a race event.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the tag (e.g., 'Temática', 'Presencial')."
+        },
+        "description": {
+          "type": "string",
+          "description": "A short description of the tag's purpose."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp when the tag was created."
+        }
+      },
+      "required": ["name", "createdAt"]
+    },
+     "RaceResult": {
+      "title": "Race Result",
+      "description": "Represents the result of a single participant in a race.",
+      "type": "object",
+      "properties": {
+        "raceId": {
+          "type": "string",
+          "description": "ID of the race."
+        },
+        "raceName": {
+          "type": "string",
+          "description": "Denormalized name of the race."
+        },
+        "raceDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Denormalized date of the race."
+        },
+        "participantId": {
+          "type": "string",
+          "description": "ID of the participant."
+        },
+        "userId": {
+          "type": "string",
+          "description": "The ID of the user who owns the registration, if applicable."
+        },
+        "athleteName": {
+          "type": "string"
+        },
+        "bibNumber": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "overallPosition": {
+          "type": "number"
+        },
+        "categoryPosition": {
+          "type": "number"
+        },
+        "netTime": {
+          "type": "string"
+        },
+        "grossTime": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "raceId",
+        "raceName",
+        "raceDate",
+        "participantId",
+        "athleteName",
+        "bibNumber",
+        "category",
+        "overallPosition",
+        "categoryPosition",
+        "netTime"
+      ]
+    },
+    "KitItem": {
+      "title": "Kit Item",
+      "description": "Represents a single item included in a race kit.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the item (e.g., 'Camiseta Oficial')."
+        },
+        "brand": {
+          "type": "string",
+          "description": "The brand of the item (e.g., 'Nike')."
+        }
+      },
+      "required": ["name"]
+    },
+    "TextBlock": {
+      "title": "Text Block",
+      "description": "A block of rich text content for the event page.",
+      "type": "object",
+      "properties": {
+        "type": { "type": "string", "enum": ["text"] },
+        "title": { "type": "string" },
+        "content": { "type": "string", "format": "markdown" }
+      },
+      "required": ["type", "content"]
+    },
+    "ImageGalleryBlock": {
+      "title": "Image Gallery Block",
+      "description": "A gallery of images for the event page.",
+      "type": "object",
+      "properties": {
+        "type": { "type": "string", "enum": ["gallery"] },
+        "title": { "type": "string" },
+        "images": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "url": { "type": "string", "format": "uri" },
+              "alt": { "type": "string" }
+            },
+            "required": ["url", "alt"]
+          }
+        }
+      },
+      "required": ["type", "images"]
+    },
+    "InfoGridBlock": {
+      "title": "Info Grid Block",
+      "description": "A grid of informational cards.",
+      "type": "object",
+      "properties": {
+        "type": { "type": "string", "enum": ["infoGrid"] },
+        "title": { "type": "string" },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "icon": { "type": "string" },
+              "title": { "type": "string" },
+              "description": { "type": "string" }
+            },
+            "required": ["title", "description"]
+          }
+        }
+      },
+      "required": ["type", "items"]
+    },
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Represents the general profile of a user, containing their personal information.",
+      "type": "object",
+      "properties": {
+        "fullName": {
+          "type": "string",
+          "description": "Nome completo"
+        },
+        "birthDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Data de nascimento"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "E-mail"
+        },
+        "documentType": {
+          "type": "string",
+          "description": "Tipo de documento"
+        },
+        "documentNumber": {
+          "type": "string",
+          "description": "Documento (CPF, RG, Passaporte)"
+        },
+        "gender": {
+          "type": "string",
+          "enum": ["Masculino", "Feminino", "Outro"],
+          "description": "Sexo"
+        },
+        "phone": {
+          "type": "string",
+          "description": "Telefone"
+        },
+        "mobilePhone": {
+          "type": "string",
+          "description": "Celular"
+        },
+        "shirtSize": {
+          "type": "string",
+          "enum": ["PP", "P", "M", "G", "GG", "XGG"],
+          "description": "Tamanho da camiseta preferencial."
+        },
+        "address": {
+          "type": "string",
+          "description": "Endereço"
+        },
+        "addressNumber": {
+          "type": "string",
+          "description": "Número"
+        },
+        "complement": {
+          "type": "string",
+          "description": "Complemento"
+        },
+        "neighborhood": {
+          "type": "string",
+          "description": "Bairro"
+        },
+        "city": {
+          "type": "string",
+          "description": "Cidade"
+        },
+        "state": {
+          "type": "string",
+          "description": "UF"
+        },
+        "zipCode": {
+          "type": "string",
+          "description": "CEP"
+        },
+        "country": {
+          "type": "string",
+          "description": "País"
+        }
+      },
+      "required": [
+        "fullName",
+        "email",
+        "documentType",
+        "documentNumber",
+        "gender",
+        "mobilePhone"
+      ]
+    },
+    "TeamMember": {
+      "title": "Team Member",
+      "description": "Represents a member of a user's team, pre-registered for group inscriptions.",
+      "type": "object",
+      "properties": {
+        "fullName": {
+          "type": "string",
+          "description": "Nome completo do membro da equipe."
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "E-mail do membro da equipe."
+        },
+        "birthDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Data de nascimento do membro da equipe."
+        },
+        "documentType": {
+          "type": "string",
+          "description": "Tipo de documento"
+        },
+        "documentNumber": {
+          "type": "string",
+          "description": "CPF do membro da equipe."
+        },
+        "gender": {
+          "type": "string",
+          "enum": ["Masculino", "Feminino", "Outro"],
+          "description": "Gênero do membro da equipe."
+        },
+        "mobilePhone": {
+            "type": "string",
+            "description": "Celular do membro da equipe."
+        },
+        "shirtSize": {
+          "type": "string",
+          "enum": ["PP", "P", "M", "G", "GG", "XGG"],
+          "description": "Tamanho da camiseta do membro da equipe."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["fullName", "email", "documentNumber", "gender", "mobilePhone"]
+    },
+    "Participant": {
+      "title": "Participant",
+      "description": "Represents a single inscription slot for a specific race, which may or may not have an athlete identified yet.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The ID of the user who owns this inscription (the buyer)."
+        },
+        "raceId": {
+          "type": "string",
+          "description": "The ID of the race this inscription is for."
+        },
+        "orderId": {
+          "type": "string",
+          "description": "The ID of the order this inscription belongs to."
+        },
+        "registrationNumber": {
+          "type": "string",
+          "description": "Número de Inscrição (gerado após identificação)."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["PENDENTE_IDENTIFICACAO", "IDENTIFICADA", "VALIDADA", "BLOQUEADA"],
+          "description": "The current status of the inscription."
+        },
+        "bibNumber": {
+          "type": "string",
+          "description": "Nº de Peito (gerado após validação)."
+        },
+        "category": {
+          "type": "string",
+          "description": "Categoria (calculada automaticamente)."
+        },
+        "modality": {
+          "type": "string",
+          "description": "Modalidade (e.g., 5km, 10km)."
+        },
+        "team": {
+          "type": "string",
+          "description": "Grupo / Assessoria."
+        },
+        "kit": {
+          "$ref": "#/entities/Kit"
+        },
+        "shirtSize": {
+          "type": "string",
+          "enum": ["PP", "P", "M", "G", "GG", "XGG"],
+          "description": "Tamanho da camiseta escolhido (se aplicável)."
+        },
+        "userProfile": {
+          "$ref": "#/entities/UserProfile",
+          "description": "A snapshot of the identified athlete's profile. Is null until identification is complete."
+        },
+        "kitStatus": {
+          "type": "string",
+          "enum": ["pendente", "retirado", "aguardando_envio", "enviado"],
+          "description": "Status da entrega do kit."
+        },
+        "emailHistory": {
+          "type": "array",
+          "description": "Log of emails sent for this participant.",
+          "items": {
+            "$ref": "#/entities/EmailLog"
+          }
+        }
+      },
+      "required": [
+        "userId",
+        "raceId",
+        "orderId",
+        "status",
+        "modality"
+      ]
+    },
+    "Coupon": {
+      "title": "Coupon",
+      "description": "Represents a discount coupon.",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Título do cupom"
+        },
+        "code": {
+          "type": "string",
+          "description": "Código do cupom"
+        },
+        "discountType": {
+            "type": "string",
+            "enum": ["percentage", "fixed"],
+            "description": "Tipo de desconto"
+        },
+        "discountValue": {
+          "type": "number",
+          "description": "Valor do desconto do cupom"
+        }
+      },
+      "required": [
+        "title",
+        "code",
+        "discountType",
+        "discountValue"
+      ]
+    },
+    "Payment": {
+      "title": "Payment",
+      "description": "Represents the payment information for a race registration, detailing the entire financial transaction.",
+      "type": "object",
+      "properties": {
+        "paymentMethod": {
+          "type": "string",
+          "description": "Forma de pagamento (e.g., Pix, Cartão, Boleto)."
+        },
+        "paymentDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Data e hora exatas da aprovação do pagamento."
+        },
+        "registrationValue": {
+          "type": "number",
+          "description": "Valor original da inscrição, sem descontos. (Valor original)"
+        },
+        "discountValue": {
+          "type": "number",
+          "description": "Valor total do desconto aplicado (de cupom, lote, etc.)."
+        },
+        "discountedValue": {
+          "type": "number",
+          "description": "Valor da inscrição após a aplicação do desconto (registrationValue - discountValue)."
+        },
+        "participationFee": {
+          "type": "number",
+          "description": "Taxa da plataforma (Endorfina Esportes) pela transação."
+        },
+        "gatewayFee": {
+          "type": "number",
+          "description": "Taxa do processador de pagamento (e.g., Stripe, Pagar.me)."
+        },
+        "transferValue": {
+          "type": "number",
+          "description": "Valor líquido a ser repassado ao organizador do evento."
+        },
+        "finalValue": {
+          "type": "number",
+          "description": "Valor final efetivamente cobrado do atleta."
+        },
+        "deliveryAddress": {
+          "type": "string",
+          "description": "Endereço de entrega (para kits, se aplicável)."
+        }
+      },
+      "required": [
+        "paymentMethod",
+        "paymentDate",
+        "registrationValue",
+        "discountValue",
+        "discountedValue",
+        "participationFee",
+        "gatewayFee",
+        "transferValue",
+        "finalValue"
+      ]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Represents a user's order for one or more race inscriptions.",
+      "type": "object",
+      "properties": {
+        "orderNumber": {
+          "type": "string",
+          "description": "Nº do pedido"
+        },
+        "userId": {
+          "type": "string",
+          "description": "ID of the user who placed the order."
+        },
+        "participantIds": {
+          "type": "array",
+          "description": "A list of participant/inscription IDs created in this order.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "comboId": {
+          "type": "string",
+          "description": "The ID of the combo, if the order is for a combo."
+        },
+        "orderDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Data do pedido"
+        },
+        "orderTime": {
+          "type": "string",
+          "format": "time",
+          "description": "Hora do pedido"
+        },
+        "orderStatus": {
+          "type": "string",
+          "description": "Status do pedido"
+        },
+        "orderStatusDetail": {
+          "type": "string",
+          "description": "Detalhe do status do pedido"
+        },
+        "responsibleName": {
+          "type": "string",
+          "description": "Responsável do pedido"
+        },
+        "responsibleEmail": {
+          "type": "string",
+          "format": "email",
+          "description": "E-mail do responsável"
+        },
+        "responsiblePhone": {
+          "type": "string",
+          "description": "Celular do responsável"
+        },
+        "orderComment": {
+          "type": "string",
+          "description": "Comentário do pedido"
+        },
+        "orderOrigin": {
+          "type": "string",
+          "description": "Origem do pedido"
+        },
+        "orderCampaign": {
+          "type": "string",
+          "description": "Campanha do pedido"
+        },
+        "totalAmount": {
+          "type": "number",
+          "description": "The total amount of the order."
+        },
+        "deliveryMethod": {
+          "type": "string",
+          "enum": ["pickup", "home"]
+        },
+        "deliveryFee": {
+          "type": "number"
+        },
+        "kitDeliveryStatus": {
+          "type": "string",
+          "enum": ["Pendente", "Entregue", "NaoAtendido", "Problema"]
+        },
+        "deliveryAddress": {
+          "type": "string"
+        },
+        "deliveryAttempts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/entities/DeliveryAttempt"
+          }
+        }
+      },
+      "required": [
+        "orderNumber",
+        "userId",
+        "participantIds",
+        "orderDate",
+        "orderStatus",
+        "responsibleName",
+        "responsibleEmail",
+        "totalAmount"
+      ]
+    },
+    "Team": {
+      "title": "Team",
+      "description": "Represents a relay race team, a sports consultancy, or any organized group.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the team."
+        },
+        "leaderName": {
+          "type": "string",
+          "description": "The name of the team leader."
+        },
+        "leaderEmail": {
+          "type": "string",
+          "format": "email",
+          "description": "The email of the team leader."
+        },
+        "joinCode": {
+          "type": "string",
+          "description": "A unique code for members to join this team."
+        },
+        "capacity": {
+          "type": "number",
+          "description": "Maximum number of members allowed in the team."
+        },
+        "raceId": {
+          "type": "string",
+          "description": "The ID of the main race this team is associated with."
+        },
+        "description": {
+          "type": "string",
+          "description": "A brief description or motto for the team."
+        },
+        "imageUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL for the team's logo or photo."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["active", "archived"],
+          "description": "The current status of the team."
+        }
+      },
+      "required": [
+        "name",
+        "leaderName",
+        "leaderEmail",
+        "joinCode",
+        "raceId",
+        "status"
+      ]
+    },
+    "Kit": {
+      "title": "Kit",
+      "description": "Defines a registration kit type for a race.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the kit (e.g., 'Kit Premium', 'Kit Básico')."
+        },
+        "description": {
+          "type": "string",
+          "description": "A brief description of what the kit includes."
+        },
+        "price": {
+          "type": "number",
+          "description": "The additional price for this kit, added to the lot price."
+        },
+        "items": {
+          "type": "array",
+          "description": "A list of items included in the kit, with stock control.",
+          "items": {
+            "$ref": "#/entities/StockItem"
+          }
+        }
+      },
+      "required": ["name", "price", "items"]
+    },
+    "StockItem": {
+      "title": "Stock Item",
+      "description": "Represents an item with inventory, such as a t-shirt with different sizes.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the item (e.g., 'Camiseta Oficial')."
+        },
+        "sizes": {
+          "type": "object",
+          "description": "Inventory for each available size.",
+          "properties": {
+            "PP": { "$ref": "#/entities/StockSize" },
+            "P": { "$ref": "#/entities/StockSize" },
+            "M": { "$ref": "#/entities/StockSize" },
+            "G": { "$ref": "#/entities/StockSize" },
+            "GG": { "$ref": "#/entities/StockSize" },
+            "XGG": { "$ref": "#/entities/StockSize" }
+          }
+        }
+      },
+      "required": ["name", "sizes"]
+    },
+    "StockSize": {
+      "title": "Stock Size",
+      "description": "Defines the inventory for a specific size of a stock item.",
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "number",
+          "description": "Total initial stock for this size."
+        },
+        "sold": {
+          "type": "number",
+          "description": "Number of items sold for this size."
+        },
+        "reserved": {
+          "type": "number",
+          "description": "Number of items reserved in active carts."
+        }
+      },
+      "required": ["total", "sold", "reserved"]
+    },
+    "Organizer": {
+      "title": "Organizer",
+      "description": "Represents an event organizer.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the organizer."
+        },
+        "logo": {
+          "type": "string",
+          "description": "URL to the organizer's logo."
+        },
+        "description": {
+          "type": "string",
+          "description": "A brief description of the organizer."
+        },
+        "supportEmail": {
+          "type": "string",
+          "format": "email",
+          "description": "Support email for the organizer."
+        }
+      },
+      "required": ["name", "supportEmail"]
+    },
+    "OrganizerUser": {
+      "title": "Organizer User",
+      "description": "Links a user to an organizer with a specific role.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The ID of the user."
+        },
+        "organizerId": {
+          "type": "string",
+          "description": "The ID of the organizer."
+        },
+        "role": {
+          "type": "string",
+          "enum": ["owner", "manager", "financial", "staff"],
+          "description": "The user's role within the organizer."
+        }
+      },
+      "required": ["userId", "organizerId", "role"]
+    },
+    "Combo": {
+      "title": "Combo",
+      "description": "Represents a package of multiple race entries, sold as a single product.",
+      "type": "object",
+      "properties": {
+        "eventId": {
+          "type": "string",
+          "description": "The ID of the event this combo belongs to."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the combo package."
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of what the combo includes."
+        },
+        "price": {
+          "type": "number",
+          "description": "The total price for the combo package."
+        },
+        "active": {
+          "type": "boolean",
+          "description": "Whether the combo is currently available for purchase."
+        },
+        "items": {
+            "type": "array",
+            "description": "An array of items included in the combo.",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "raceId": { "type": "string" },
+                    "modality": { "type": "string" },
+                    "quantity": { "type": "number" }
+                },
+                "required": ["raceId", "modality", "quantity"]
+            }
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp when the combo was created."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp when the combo was last updated."
+        }
+      },
+      "required": ["eventId", "name", "price", "active"]
+    },
+    "ComboItem": {
+      "title": "Combo Item",
+      "description": "Represents a single entry type within a combo package.",
+      "type": "object",
+      "properties": {
+        "comboId": {
+          "type": "string",
+          "description": "The ID of the combo this item belongs to."
+        },
+        "raceId": {
+          "type": "string",
+          "description": "The ID of the specific race or modality."
+        },
+        "quantity": {
+          "type": "number",
+          "description": "The quantity of this specific race entry included in the combo."
+        }
+      },
+      "required": ["comboId", "raceId", "quantity"]
+    },
+    "RegistrationType": {
+      "title": "Registration Type",
+      "description": "Defines a specific type of registration with its own rules and pricing.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the registration type (e.g., 'Idoso', 'PCD', 'Normal')."
+        },
+        "price": {
+          "type": "number",
+          "description": "The price for this registration type, which can override the lot price."
+        },
+        "minAge": {
+          "type": "number",
+          "description": "The minimum age required for this registration type."
+        },
+        "maxAge": {
+          "type": "number",
+          "description": "The maximum age allowed for this registration type."
+        },
+        "requiresDocument": {
+          "type": "boolean",
+          "description": "Whether a document upload is required for this registration type."
+        },
+        "documentType": {
+          "type": "string",
+          "description": "The type of document required (e.g., 'Laudo PCD', 'RG')."
+        },
+        "limit": {
+          "type": "number",
+          "description": "The maximum number of available slots for this registration type (optional)."
+        }
+      },
+      "required": ["name", "price"]
+    },
+    "AbandonedCart": {
+      "title": "Abandoned Cart",
+      "description": "Represents a user's incomplete registration process.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The ID of the user, if logged in. Null for guests."
+        },
+        "customerEmail": {
+          "type": "string",
+          "format": "email"
+        },
+        "customerName": {
+          "type": "string"
+        },
+        "items": {
+          "type": "array",
+          "description": "A snapshot of the items in the cart at the time of abandonment.",
+          "items": {
+            "$ref": "#/entities/CartItem"
+          }
+        },
+        "totalAmount": {
+            "type": "number"
+        },
+        "couponCode": {
+            "type": "string"
+        },
+        "status": {
+            "type": "string",
+            "enum": ["ACTIVE", "ABANDONED", "CONVERTED", "ARCHIVED"],
+            "description": "The current status of the cart."
+        },
+        "lastStep": {
+          "type": "string",
+          "enum": ["CART", "IDENTIFICATION", "DELIVERY", "PAYMENT"],
+          "description": "The last known step the user was on."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastActivityAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "deviceType": {
+          "type": "string",
+          "enum": ["desktop", "mobile"],
+          "description": "The device type used by the customer."
+        },
+        "emailHistory": {
+          "type": "array",
+          "description": "Log of emails sent for this cart.",
+          "items": {
+            "$ref": "#/entities/EmailLog"
+          }
+        }
+      },
+      "required": [
+        "customerEmail",
+        "items",
+        "status",
+        "lastStep",
+        "createdAt",
+        "lastActivityAt"
+      ]
+    },
+    "EmailLog": {
+      "title": "Email Log",
+      "description": "Records an email sent by the automated system.",
+      "type": "object",
+      "properties": {
+        "recipientEmail": {
+          "type": "string",
+          "format": "email"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["abandonedCart", "pendingRegistration"]
+        },
+        "status": {
+          "type": "string",
+          "enum": ["sent", "failed"]
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "error": {
+          "type": "string"
+        }
+      },
+      "required": ["recipientEmail", "type", "status", "timestamp"]
+    },
+    "Notification": {
+      "title": "Notification",
+      "description": "Represents a notification for an admin user.",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "The title of the notification."
+        },
+        "description": {
+          "type": "string",
+          "description": "The detailed content of the notification."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp when the notification was created."
+        },
+        "read": {
+          "type": "boolean",
+          "description": "Whether the notification has been read."
+        },
+        "userId": {
+          "type": "string",
+          "description": "The ID of the user this notification is for (e.g., an admin)."
+        }
+      },
+      "required": ["title", "description", "createdAt", "read", "userId"]
+    },
+    "Cart": {
+      "title": "Shopping Cart",
+      "description": "Represents a user's shopping cart.",
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "description": "An array of items in the cart.",
+          "items": {
+            "$ref": "#/entities/CartItem"
+          }
+        }
+      }
+    },
+    "CartItem": {
+      "title": "Cart Item",
+      "description": "An item in the shopping cart.",
+      "type": "object",
+      "properties": {
+        "raceId": {
+          "type": "string"
+        },
+        "raceName": {
+          "type": "string"
+        },
+        "raceImage": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "number"
+        },
+        "option": {
+          "type": "object",
+          "properties": {
+            "distance": {
+              "type": "string"
+            },
+            "lots": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "price": {
+                    "type": "number"
+                  },
+                  "startDate": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "endDate": {
+                    "type": "string",
+                    "format": "date"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "required": ["raceId", "quantity", "option"]
+    },
+    "AutomationSettings": {
+      "title": "Automation Settings",
+      "description": "Stores configuration for automated tasks like email reminders.",
+      "type": "object",
+      "properties": {
+        "abandonedCart": {
+          "type": "object",
+          "properties": {
+            "minHoursSinceUpdate": {
+              "type": "number",
+              "description": "Minimum hours since cart was updated to send a reminder."
+            },
+            "minHoursBetweenEmails": {
+              "type": "number",
+              "description": "Minimum hours between reminders for the same cart."
+            },
+            "maxEmailsPerDay": {
+              "type": "number",
+              "description": "Maximum reminders per user per day."
+            }
+          },
+          "required": ["minHoursSinceUpdate", "minHoursBetweenEmails", "maxEmailsPerDay"]
+        },
+        "pendingRegistration": {
+          "type": "object",
+          "properties": {
+            "minHoursSinceCreation": {
+              "type": "number",
+              "description": "Minimum hours since registration was created to send a reminder."
+            },
+            "minHoursBetweenEmails": {
+              "type": "number",
+              "description": "Minimum hours between reminders for the same user."
+            }
+          },
+          "required": ["minHoursSinceCreation", "minHoursBetweenEmails"]
+        }
+      },
+      "required": ["abandonedCart", "pendingRegistration"]
+    }
+  },
+  "auth": {
+    "providers": ["email"]
+  },
+  "firestore": {
+    "/contactMessages/{messageId}": {
+      "schema": {
+        "$ref": "#/entities/ContactMessage"
+      },
+      "description": "Stores messages submitted through the contact form."
+    },
+    "/users/{userId}": {
+      "schema": {
+        "$ref": "#/entities/UserProfile"
+      },
+      "description": "Stores general user profile information."
+    },
+    "/users/{userId}/teamMembers/{memberId}": {
+      "schema": {
+        "$ref": "#/entities/TeamMember"
+      },
+      "description": "Stores a user's pre-registered team members for group inscriptions."
+    },
+    "/races/{raceId}": {
+      "schema": {
+        "$ref": "#/entities/Race"
+      },
+      "description": "Stores individual race documents."
+    },
+     "/raceTags/{tagId}": {
+      "schema": {
+        "$ref": "#/entities/RaceTag"
+      },
+      "description": "Stores all available tags for race events."
+    },
+    "/races/{raceId}/participants/{participantId}": {
+      "schema": {
+        "$ref": "#/entities/Participant"
+      },
+      "description": "Stores the inscriptions for a specific race."
+    },
+    "/races/{raceId}/teams/{teamId}": {
+      "schema": {
+        "$ref": "#/entities/Team"
+      },
+      "description": "Stores the relay teams, consultancies, or groups for a specific race."
+    },
+    "/races/{raceId}/stockItems/{stockItemId}": {
+      "schema": {
+        "$ref": "#/entities/StockItem"
+      },
+      "description": "Stores the inventory for items related to a specific race."
+    },
+     "/results/{resultId}": {
+      "schema": {
+        "$ref": "#/entities/RaceResult"
+      },
+      "description": "Stores all race results, denormalized for easy querying."
+    },
+    "/organizers/{organizerId}": {
+      "schema": {
+        "$ref": "#/entities/Organizer"
+      },
+      "description": "Stores information about event organizers."
+    },
+    "/organizerUsers/{organizerUserId}": {
+      "schema": {
+        "$ref": "#/entities/OrganizerUser"
+      },
+      "description": "Manages user roles and permissions for each organizer."
+    },
+    "/orders/{orderId}": {
+        "schema": {
+            "$ref": "#/entities/Order"
+        },
+        "description": "Stores all customer orders, whether for single entries or combos."
+    },
+    "/combos/{comboId}": {
+        "schema": {
+            "$ref": "#/entities/Combo"
+        },
+        "description": "Stores available combo packages."
+    },
+    "/combos/{comboId}/items/{comboItemId}": {
+        "schema": {
+            "$ref": "#/entities/ComboItem"
+        },
+        "description": "Stores the items that make up a combo."
+    },
+    "/abandonedCarts/{cartId}": {
+      "schema": {
+        "$ref": "#/entities/AbandonedCart"
+      },
+      "description": "Stores data about incomplete registration processes."
+    },
+    "/notifications/{notificationId}": {
+      "schema": {
+        "$ref": "#/entities/Notification"
+      },
+      "description": "Stores notifications for admin users."
+    },
+    "/coupons/{couponId}": {
+      "schema": {
+        "$ref": "#/entities/Coupon"
+      },
+      "description": "Stores discount coupons."
+    },
+    "/carts/{userId}": {
+      "schema": {
+        "$ref": "#/entities/Cart"
+      },
+      "description": "Stores the user's shopping cart."
+    },
+    "/emailLogs/{logId}": {
+      "schema": {
+        "$ref": "#/entities/EmailLog"
+      },
+      "description": "Logs all automated emails sent by the system."
+    },
+    "/automationSettings/{configId}": {
+      "schema": {
+        "$ref": "#/entities/AutomationSettings"
+      },
+      "description": "Stores automation settings. Typically a single document."
+    }
+  }
+}
